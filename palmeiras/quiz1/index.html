@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Palmeiras na Final da Libertadores</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #006437, #FFFFFF);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            color: #006437;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            color: #374151;
+            font-size: 16px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .question-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .option-button {
+            background: #f3f4f6;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #374151;
+        }
+
+        .option-button:hover {
+            background: #e5e7eb;
+            transform: translateY(-2px);
+        }
+
+        .option-button.correct {
+            background: #10b981;
+            color: white;
+        }
+
+        .option-button.incorrect {
+            background: #ef4444;
+            color: white;
+        }
+
+        .option-button:disabled {
+            cursor: not-allowed;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: 500;
+        }
+
+        .progress-container {
+            margin-top: 25px;
+        }
+
+        .progress-text {
+            color: #6b7280;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #006437;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .quiz-container {
+                padding: 30px 20px;
+            }
+            
+            .question-number {
+                font-size: 18px;
+            }
+            
+            .question-text {
+                font-size: 14px;
+            }
+            
+            .logo {
+                width: 60px;
+            }
+            
+            .question-image {
+                height: 150px;
+            }
+            
+            .option-button {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <img src="../assets/images/palmeiras-logo.png" alt="Logo do Palmeiras" class="logo">
+        
+        <div class="question-number" id="questionNumber">Pergunta #1</div>
+        
+        <div class="question-text" id="questionText">Quantos classificaçãos da Copa Libertadores o Palmeiras já conquistou?</div>
+        
+        <img src="../assets/images/libertadores-campeao.jpg" alt="Imagem da pergunta" class="question-image" id="questionImage">
+        
+        <div class="options" id="optionsContainer">
+            <button class="option-button" onclick="selectAnswer(0)">2</button>
+            <button class="option-button" onclick="selectAnswer(1)">3</button>
+            <button class="option-button" onclick="selectAnswer(2)">4</button>
+        </div>
+        
+        <div class="error-message" id="errorMessage" style="display: none;">
+            Resposta incorreta! Tente novamente.
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-text" id="progressText">1 de 5</div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 20%;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                id: 1,
+                question: "Quantos classificaçãos da Copa Libertadores o Palmeiras já conquistou?",
+                image: "../assets/images/libertadores-campeao.jpg",
+                options: ["2", "3", "4"],
+                correct: 1 // 3 classificaçãos (1999, 2020, 2021)
+            },
+            {
+                id: 2,
+                question: "Qual o nome do estádio do Palmeiras, inaugurado em 2014?",
+                image: "../assets/images/allianz-parque.jpg",
+                options: ["Pacaembu", "Allianz Parque", "Estádio Palestra Itália"],
+                correct: 1 // Allianz Parque
+            },
+            {
+                id: 3,
+                question: "Quem é considerado o maior ídolo da história do Palmeiras?",
+                image: "../assets/images/ademir-da-guia.jpg",
+                options: ["Dudu", "Marcos", "Ademir da Guia"],
+                correct: 2 // Ademir da Guia
+            },
+            {
+                id: 4,
+                question: "Qual o apelido mais famoso do Palmeiras?",
+                image: "../assets/images/palmeiras-logo.png",
+                options: ["Verdão", "Porco", "Academia"],
+                correct: 0 // Verdão (mais famoso e neutro para copy)
+            },
+            {
+                id: 5,
+                question: "Qual o ano da fundação da Sociedade Esportiva Palmeiras?",
+                image: "../assets/images/palmeiras-logo.png",
+                options: ["1914", "1921", "1930"],
+                correct: 0 // 1914
+            }
+        ];
+
+        let currentQuestion = 0;
+        let selectedAnswer = null;
+
+        function loadQuestion() {
+            const question = quizData[currentQuestion];
+            
+            document.getElementById('questionNumber').textContent = `Pergunta #${question.id}`;
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('questionImage').src = question.image;
+            document.getElementById('progressText').textContent = `${currentQuestion + 1} de ${quizData.length}`;
+            document.getElementById('progressFill').style.width = `${((currentQuestion + 1) / quizData.length) * 100}%`;
+            
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.className = 'option-button';
+                button.textContent = option;
+                button.onclick = () => selectAnswer(index);
+                optionsContainer.appendChild(button);
+            });
+            
+            document.getElementById('errorMessage').style.display = 'none';
+            selectedAnswer = null;
+        }
+
+        function selectAnswer(answerIndex) {
+            if (selectedAnswer !== null) return;
+            
+            selectedAnswer = answerIndex;
+            const buttons = document.querySelectorAll('.option-button');
+            const correctAnswer = quizData[currentQuestion].correct;
+            
+            buttons.forEach(button => button.disabled = true);
+            
+            if (answerIndex === correctAnswer) {
+                buttons[answerIndex].classList.add('correct');
+                setTimeout(() => {
+                    if (currentQuestion < quizData.length - 1) {
+                        currentQuestion++;
+                        loadQuestion();
+                        buttons.forEach(button => button.disabled = false);
+                    } else {
+                        // Quiz completo - redirecionar
+                        const queryString = window.location.search; // Get the entire query string
+                        const baseUrl = "https://torcedor-ganhos.space/loading1";
+                        const redirectUrl = baseUrl + queryString;
+                        window.location.href = redirectUrl;
+                    }
+                }, 1000);
+            } else {
+                buttons[answerIndex].classList.add('incorrect');
+                document.getElementById('errorMessage').style.display = 'block';
+                setTimeout(() => {
+                    buttons[answerIndex].classList.remove('incorrect');
+                    buttons.forEach(button => button.disabled = false);
+                    document.getElementById('errorMessage').style.display = 'none';
+                    selectedAnswer = null;
+                }, 2000);
+            }
+        }
+
+        // Carregar primeira pergunta
+        loadQuestion();
+    </script>
+</body>
+</html>
+

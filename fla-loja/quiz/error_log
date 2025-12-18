@@ -1,0 +1,429 @@
+[02-Sep-2025 17:10:35 America/Sao_Paulo] [Pagamento] 🔍 Debug - Valor original: 79.98 | Como float: 79.98
+[02-Sep-2025 17:10:35 America/Sao_Paulo] [Pagamento] 🔍 Debug - Após conversão: 7998 centavos
+[02-Sep-2025 17:10:35 America/Sao_Paulo] [Pagamento] 💰 Valor recebido: 79.98 | Valor float: 79.98 | Valor em centavos: 7998
+[02-Sep-2025 17:10:35 America/Sao_Paulo] [Pagamento] 📊 Parâmetros UTM recebidos: []
+[02-Sep-2025 17:10:35 America/Sao_Paulo] [ghostspay] 📝 Preparando dados para envio: {"valor_recebido":"79.98","valor_centavos":7998,"nome":"Manuela Vieira Lima","email":"clienteteste@gmail.com","cpf":"52378812701"}
+[02-Sep-2025 17:10:35 America/Sao_Paulo] [ghostspay] 🌐 URL da requisição: https://pay.bullspay.net/api/v1/transaction.purchase
+[02-Sep-2025 17:10:35 America/Sao_Paulo] [ghostspay] 📦 Dados enviados: {"paymentMethod":"PIX","amount":7998,"items":[{"unitPrice":7998,"title":"Libera\u00e7\u00e3o de Benef\u00edcio","quantity":1,"tangible":false}],"utmQuery":"","checkoutUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.php","referrerUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.html","externalId":"blusa68b74f3bc9021","traceable":true,"name":"Manuela Vieira Lima","email":"clienteteste@gmail.com","cpf":"52378812701","phone":"11999999999"}
+[02-Sep-2025 17:10:36 America/Sao_Paulo] [ghostspay] 🔍 Detalhes da requisição cURL:
+*   Trying 216.150.1.1:443...
+* Connected to pay.bullspay.net (216.150.1.1) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=pay.bullspay.net
+*  start date: Jul 14 12:48:47 2025 GMT
+*  expire date: Oct 12 12:48:46 2025 GMT
+*  subjectAltName: host "pay.bullspay.net" matched cert's "pay.bullspay.net"
+*  issuer: C=US; O=Let's Encrypt; CN=R10
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: POST]
+* h2h3 [:path: /api/v1/transaction.purchase]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: pay.bullspay.net]
+* h2h3 [accept: */*]
+* h2h3 [authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071]
+* h2h3 [content-type: application/json]
+* h2h3 [content-length: 442]
+* Using Stream ID: 1 (easy handle 0x1cbb9d0)
+> POST /api/v1/transaction.purchase HTTP/2
+Host: pay.bullspay.net
+accept: */*
+authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071
+content-type: application/json
+content-length: 442
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+< HTTP/2 500 
+< access-control-allow-origin: *
+< cache-control: public, max-age=0, must-revalidate
+< content-type: application/json
+< date: Tue, 02 Sep 2025 20:10:36 GMT
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-matched-path: /api/v1/[...trpc]
+< x-vercel-cache: MISS
+< x-vercel-id: gru1::iad1::bq9fp-1756843836010-efe12780dbc6
+< content-length: 73
+< 
+* Connection #0 to host pay.bullspay.net left intact
+
+[02-Sep-2025 17:10:36 America/Sao_Paulo] [ghostspay] 📊 HTTP Status Code: 500
+[02-Sep-2025 17:10:36 America/Sao_Paulo] [ghostspay] 📄 Resposta bruta: {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:10:36 America/Sao_Paulo] [ghostspay] ❌ Erro: Erro na API: HTTP 500 - {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:10:36 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [Pagamento] 🔍 Debug - Valor original: 119.98 | Como float: 119.98
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [Pagamento] 🔍 Debug - Após conversão: 11998 centavos
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [Pagamento] 💰 Valor recebido: 119.98 | Valor float: 119.98 | Valor em centavos: 11998
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [Pagamento] 📊 Parâmetros UTM recebidos: []
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] 📝 Preparando dados para envio: {"valor_recebido":"119.98","valor_centavos":11998,"nome":"Miguel Almeida Martins","email":"clienteteste@gmail.com","cpf":"79613058745"}
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] 🌐 URL da requisição: https://pay.bullspay.net/api/v1/transaction.purchase
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] 📦 Dados enviados: {"paymentMethod":"PIX","amount":11998,"items":[{"unitPrice":11998,"title":"Libera\u00e7\u00e3o de Benef\u00edcio","quantity":1,"tangible":false}],"utmQuery":"","checkoutUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.php","referrerUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.html","externalId":"blusa68b751c213b3d","traceable":true,"name":"Miguel Almeida Martins","email":"clienteteste@gmail.com","cpf":"79613058745","phone":"11999999999"}
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] 🔍 Detalhes da requisição cURL:
+*   Trying 216.150.1.129:443...
+* Connected to pay.bullspay.net (216.150.1.129) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=pay.bullspay.net
+*  start date: Jul 14 12:48:47 2025 GMT
+*  expire date: Oct 12 12:48:46 2025 GMT
+*  subjectAltName: host "pay.bullspay.net" matched cert's "pay.bullspay.net"
+*  issuer: C=US; O=Let's Encrypt; CN=R10
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: POST]
+* h2h3 [:path: /api/v1/transaction.purchase]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: pay.bullspay.net]
+* h2h3 [accept: */*]
+* h2h3 [authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071]
+* h2h3 [content-type: application/json]
+* h2h3 [content-length: 447]
+* Using Stream ID: 1 (easy handle 0x29a4490)
+> POST /api/v1/transaction.purchase HTTP/2
+Host: pay.bullspay.net
+accept: */*
+authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071
+content-type: application/json
+content-length: 447
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+< HTTP/2 500 
+< access-control-allow-origin: *
+< cache-control: public, max-age=0, must-revalidate
+< content-type: application/json
+< date: Tue, 02 Sep 2025 20:21:22 GMT
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-matched-path: /api/v1/[...trpc]
+< x-vercel-cache: MISS
+< x-vercel-id: gru1::iad1::b4wnz-1756844482301-b59c1a75e257
+< content-length: 73
+< 
+* Connection #0 to host pay.bullspay.net left intact
+
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] 📊 HTTP Status Code: 500
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] 📄 Resposta bruta: {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] ❌ Erro: Erro na API: HTTP 500 - {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:21:22 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [Pagamento] 🔍 Debug - Valor original: 119.98 | Como float: 119.98
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [Pagamento] 🔍 Debug - Após conversão: 11998 centavos
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [Pagamento] 💰 Valor recebido: 119.98 | Valor float: 119.98 | Valor em centavos: 11998
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [Pagamento] 📊 Parâmetros UTM recebidos: []
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] 📝 Preparando dados para envio: {"valor_recebido":"119.98","valor_centavos":11998,"nome":"Gustavo Vieira Ferreira","email":"clienteteste@gmail.com","cpf":"64590390620"}
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] 🌐 URL da requisição: https://pay.bullspay.net/api/v1/transaction.purchase
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] 📦 Dados enviados: {"paymentMethod":"PIX","amount":11998,"items":[{"unitPrice":11998,"title":"Libera\u00e7\u00e3o de Benef\u00edcio","quantity":1,"tangible":false}],"utmQuery":"","checkoutUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.php","referrerUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.html","externalId":"blusa68b7521835d3a","traceable":true,"name":"Gustavo Vieira Ferreira","email":"clienteteste@gmail.com","cpf":"64590390620","phone":"11999999999"}
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] 🔍 Detalhes da requisição cURL:
+*   Trying 216.150.1.129:443...
+* Connected to pay.bullspay.net (216.150.1.129) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=pay.bullspay.net
+*  start date: Jul 14 12:48:47 2025 GMT
+*  expire date: Oct 12 12:48:46 2025 GMT
+*  subjectAltName: host "pay.bullspay.net" matched cert's "pay.bullspay.net"
+*  issuer: C=US; O=Let's Encrypt; CN=R10
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: POST]
+* h2h3 [:path: /api/v1/transaction.purchase]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: pay.bullspay.net]
+* h2h3 [accept: */*]
+* h2h3 [authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071]
+* h2h3 [content-type: application/json]
+* h2h3 [content-length: 448]
+* Using Stream ID: 1 (easy handle 0x29a4490)
+> POST /api/v1/transaction.purchase HTTP/2
+Host: pay.bullspay.net
+accept: */*
+authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071
+content-type: application/json
+content-length: 448
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+< HTTP/2 500 
+< access-control-allow-origin: *
+< cache-control: public, max-age=0, must-revalidate
+< content-type: application/json
+< date: Tue, 02 Sep 2025 20:22:48 GMT
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-matched-path: /api/v1/[...trpc]
+< x-vercel-cache: MISS
+< x-vercel-id: gru1::iad1::k5b57-1756844568438-42336956ca67
+< content-length: 73
+< 
+* Connection #0 to host pay.bullspay.net left intact
+
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] 📊 HTTP Status Code: 500
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] 📄 Resposta bruta: {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] ❌ Erro: Erro na API: HTTP 500 - {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:22:48 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}
+[02-Sep-2025 17:23:15 America/Sao_Paulo] [Pagamento] 🔍 Debug - Valor original: 119.98 | Como float: 119.98
+[02-Sep-2025 17:23:15 America/Sao_Paulo] [Pagamento] 🔍 Debug - Após conversão: 11998 centavos
+[02-Sep-2025 17:23:15 America/Sao_Paulo] [Pagamento] 💰 Valor recebido: 119.98 | Valor float: 119.98 | Valor em centavos: 11998
+[02-Sep-2025 17:23:15 America/Sao_Paulo] [Pagamento] 📊 Parâmetros UTM recebidos: []
+[02-Sep-2025 17:23:15 America/Sao_Paulo] [ghostspay] 📝 Preparando dados para envio: {"valor_recebido":"119.98","valor_centavos":11998,"nome":"Matheus Soares Gomes","email":"clienteteste@gmail.com","cpf":"28735508728"}
+[02-Sep-2025 17:23:15 America/Sao_Paulo] [ghostspay] 🌐 URL da requisição: https://pay.bullspay.net/api/v1/transaction.purchase
+[02-Sep-2025 17:23:15 America/Sao_Paulo] [ghostspay] 📦 Dados enviados: {"paymentMethod":"PIX","amount":11998,"items":[{"unitPrice":11998,"title":"Libera\u00e7\u00e3o de Benef\u00edcio","quantity":1,"tangible":false}],"utmQuery":"","checkoutUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.php","referrerUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.html","externalId":"blusa68b7523391e92","traceable":true,"name":"Matheus Soares Gomes","email":"clienteteste@gmail.com","cpf":"28735508728","phone":"11999999999"}
+[02-Sep-2025 17:23:16 America/Sao_Paulo] [ghostspay] 🔍 Detalhes da requisição cURL:
+*   Trying 216.150.1.129:443...
+* Connected to pay.bullspay.net (216.150.1.129) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=pay.bullspay.net
+*  start date: Jul 14 12:48:47 2025 GMT
+*  expire date: Oct 12 12:48:46 2025 GMT
+*  subjectAltName: host "pay.bullspay.net" matched cert's "pay.bullspay.net"
+*  issuer: C=US; O=Let's Encrypt; CN=R10
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: POST]
+* h2h3 [:path: /api/v1/transaction.purchase]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: pay.bullspay.net]
+* h2h3 [accept: */*]
+* h2h3 [authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071]
+* h2h3 [content-type: application/json]
+* h2h3 [content-length: 445]
+* Using Stream ID: 1 (easy handle 0x29a4490)
+> POST /api/v1/transaction.purchase HTTP/2
+Host: pay.bullspay.net
+accept: */*
+authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071
+content-type: application/json
+content-length: 445
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+< HTTP/2 500 
+< access-control-allow-origin: *
+< cache-control: public, max-age=0, must-revalidate
+< content-type: application/json
+< date: Tue, 02 Sep 2025 20:23:15 GMT
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-matched-path: /api/v1/[...trpc]
+< x-vercel-cache: MISS
+< x-vercel-id: gru1::iad1::k5b57-1756844595822-3aad2fe1b2e9
+< content-length: 73
+< 
+* Connection #0 to host pay.bullspay.net left intact
+
+[02-Sep-2025 17:23:16 America/Sao_Paulo] [ghostspay] 📊 HTTP Status Code: 500
+[02-Sep-2025 17:23:16 America/Sao_Paulo] [ghostspay] 📄 Resposta bruta: {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:23:16 America/Sao_Paulo] [ghostspay] ❌ Erro: Erro na API: HTTP 500 - {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:23:16 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [Pagamento] 🔍 Debug - Valor original: 119.98 | Como float: 119.98
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [Pagamento] 🔍 Debug - Após conversão: 11998 centavos
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [Pagamento] 💰 Valor recebido: 119.98 | Valor float: 119.98 | Valor em centavos: 11998
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [Pagamento] 📊 Parâmetros UTM recebidos: []
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] 📝 Preparando dados para envio: {"valor_recebido":"119.98","valor_centavos":11998,"nome":"Felipe Ferreira Ribeiro","email":"clienteteste@gmail.com","cpf":"46999751358"}
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] 🌐 URL da requisição: https://pay.bullspay.net/api/v1/transaction.purchase
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] 📦 Dados enviados: {"paymentMethod":"PIX","amount":11998,"items":[{"unitPrice":11998,"title":"Libera\u00e7\u00e3o de Benef\u00edcio","quantity":1,"tangible":false}],"utmQuery":"","checkoutUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.php","referrerUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.html","externalId":"blusa68b75246116f2","traceable":true,"name":"Felipe Ferreira Ribeiro","email":"clienteteste@gmail.com","cpf":"46999751358","phone":"11999999999"}
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] 🔍 Detalhes da requisição cURL:
+*   Trying 216.150.1.129:443...
+* Connected to pay.bullspay.net (216.150.1.129) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=pay.bullspay.net
+*  start date: Jul 14 12:48:47 2025 GMT
+*  expire date: Oct 12 12:48:46 2025 GMT
+*  subjectAltName: host "pay.bullspay.net" matched cert's "pay.bullspay.net"
+*  issuer: C=US; O=Let's Encrypt; CN=R10
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: POST]
+* h2h3 [:path: /api/v1/transaction.purchase]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: pay.bullspay.net]
+* h2h3 [accept: */*]
+* h2h3 [authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071]
+* h2h3 [content-type: application/json]
+* h2h3 [content-length: 448]
+* Using Stream ID: 1 (easy handle 0x29a4490)
+> POST /api/v1/transaction.purchase HTTP/2
+Host: pay.bullspay.net
+accept: */*
+authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071
+content-type: application/json
+content-length: 448
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+< HTTP/2 500 
+< access-control-allow-origin: *
+< cache-control: public, max-age=0, must-revalidate
+< content-type: application/json
+< date: Tue, 02 Sep 2025 20:23:34 GMT
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-matched-path: /api/v1/[...trpc]
+< x-vercel-cache: MISS
+< x-vercel-id: gru1::iad1::fhnqj-1756844614295-2c342e3ba400
+< content-length: 73
+< 
+* Connection #0 to host pay.bullspay.net left intact
+
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] 📊 HTTP Status Code: 500
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] 📄 Resposta bruta: {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] ❌ Erro: Erro na API: HTTP 500 - {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:23:34 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [Pagamento] 🔍 Debug - Valor original: 79.98 | Como float: 79.98
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [Pagamento] 🔍 Debug - Após conversão: 7998 centavos
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [Pagamento] 💰 Valor recebido: 79.98 | Valor float: 79.98 | Valor em centavos: 7998
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [Pagamento] 📊 Parâmetros UTM recebidos: []
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] 📝 Preparando dados para envio: {"valor_recebido":"79.98","valor_centavos":7998,"nome":"Alice Costa Souza","email":"clienteteste@gmail.com","cpf":"98400748492"}
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] 🌐 URL da requisição: https://pay.bullspay.net/api/v1/transaction.purchase
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] 📦 Dados enviados: {"paymentMethod":"PIX","amount":7998,"items":[{"unitPrice":7998,"title":"Libera\u00e7\u00e3o de Benef\u00edcio","quantity":1,"tangible":false}],"utmQuery":"","checkoutUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.php","referrerUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.html","externalId":"blusa68b752994a887","traceable":true,"name":"Alice Costa Souza","email":"clienteteste@gmail.com","cpf":"98400748492","phone":"11999999999"}
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] 🔍 Detalhes da requisição cURL:
+*   Trying 216.150.1.129:443...
+* Connected to pay.bullspay.net (216.150.1.129) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=pay.bullspay.net
+*  start date: Jul 14 12:48:47 2025 GMT
+*  expire date: Oct 12 12:48:46 2025 GMT
+*  subjectAltName: host "pay.bullspay.net" matched cert's "pay.bullspay.net"
+*  issuer: C=US; O=Let's Encrypt; CN=R10
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: POST]
+* h2h3 [:path: /api/v1/transaction.purchase]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: pay.bullspay.net]
+* h2h3 [accept: */*]
+* h2h3 [authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071]
+* h2h3 [content-type: application/json]
+* h2h3 [content-length: 440]
+* Using Stream ID: 1 (easy handle 0x29a4490)
+> POST /api/v1/transaction.purchase HTTP/2
+Host: pay.bullspay.net
+accept: */*
+authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071
+content-type: application/json
+content-length: 440
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+< HTTP/2 500 
+< access-control-allow-origin: *
+< cache-control: public, max-age=0, must-revalidate
+< content-type: application/json
+< date: Tue, 02 Sep 2025 20:24:57 GMT
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-matched-path: /api/v1/[...trpc]
+< x-vercel-cache: MISS
+< x-vercel-id: gru1::iad1::p2tm5-1756844697524-43c71098f9c5
+< content-length: 73
+< 
+* Connection #0 to host pay.bullspay.net left intact
+
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] 📊 HTTP Status Code: 500
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] 📄 Resposta bruta: {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] ❌ Erro: Erro na API: HTTP 500 - {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:24:57 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}
+[02-Sep-2025 17:25:43 America/Sao_Paulo] [ghostspay] ❌ Erro: Valor não informado
+[02-Sep-2025 17:25:43 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [Pagamento] 🔍 Debug - Valor original: 79.98 | Como float: 79.98
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [Pagamento] 🔍 Debug - Após conversão: 7998 centavos
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [Pagamento] 💰 Valor recebido: 79.98 | Valor float: 79.98 | Valor em centavos: 7998
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [Pagamento] 📊 Parâmetros UTM recebidos: []
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] 📝 Preparando dados para envio: {"valor_recebido":"79.98","valor_centavos":7998,"nome":"Beatriz Silva Almeida","email":"clienteteste@gmail.com","cpf":"63753065900"}
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] 🌐 URL da requisição: https://pay.bullspay.net/api/v1/transaction.purchase
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] 📦 Dados enviados: {"paymentMethod":"PIX","amount":7998,"items":[{"unitPrice":7998,"title":"Libera\u00e7\u00e3o de Benef\u00edcio","quantity":1,"tangible":false}],"utmQuery":"","checkoutUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.php","referrerUrl":"https:\/\/fla-premios.shop\/quiz\/pagamento.html","externalId":"blusa68b752f45b37d","traceable":true,"name":"Beatriz Silva Almeida","email":"clienteteste@gmail.com","cpf":"63753065900","phone":"11999999999"}
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] 🔍 Detalhes da requisição cURL:
+*   Trying 216.150.16.65:443...
+* Connected to pay.bullspay.net (216.150.16.65) port 443 (#0)
+* ALPN: offers h2
+* ALPN: offers http/1.1
+*  CAfile: /etc/pki/tls/certs/ca-bundle.crt
+*  CApath: none
+* SSL connection using TLSv1.3 / TLS_AES_128_GCM_SHA256
+* ALPN: server accepted h2
+* Server certificate:
+*  subject: CN=pay.bullspay.net
+*  start date: Jul 14 12:48:47 2025 GMT
+*  expire date: Oct 12 12:48:46 2025 GMT
+*  subjectAltName: host "pay.bullspay.net" matched cert's "pay.bullspay.net"
+*  issuer: C=US; O=Let's Encrypt; CN=R10
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multiplexing
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* h2h3 [:method: POST]
+* h2h3 [:path: /api/v1/transaction.purchase]
+* h2h3 [:scheme: https]
+* h2h3 [:authority: pay.bullspay.net]
+* h2h3 [accept: */*]
+* h2h3 [authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071]
+* h2h3 [content-type: application/json]
+* h2h3 [content-length: 444]
+* Using Stream ID: 1 (easy handle 0x29a4490)
+> POST /api/v1/transaction.purchase HTTP/2
+Host: pay.bullspay.net
+accept: */*
+authorization: a49025b4-1a9b-4892-80f3-777fd4d1e071
+content-type: application/json
+content-length: 444
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 250)!
+< HTTP/2 500 
+< access-control-allow-origin: *
+< cache-control: public, max-age=0, must-revalidate
+< content-type: application/json
+< date: Tue, 02 Sep 2025 20:26:28 GMT
+< server: Vercel
+< strict-transport-security: max-age=63072000
+< x-matched-path: /api/v1/[...trpc]
+< x-vercel-cache: MISS
+< x-vercel-id: gru1::iad1::bl2dl-1756844788590-1850e41ce961
+< content-length: 73
+< 
+* Connection #0 to host pay.bullspay.net left intact
+
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] 📊 HTTP Status Code: 500
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] 📄 Resposta bruta: {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] ❌ Erro: Erro na API: HTTP 500 - {"message":"Erro ao processar pagamento.","code":"INTERNAL_SERVER_ERROR"}
+[02-Sep-2025 17:26:28 America/Sao_Paulo] [ghostspay] 🔍 Stack trace: #0 {main}

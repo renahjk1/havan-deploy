@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atenção - Palmeiras</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #006437, #FFFFFF);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .red-bar {
+            height: 5px;
+            background: #006437;
+            margin-bottom: 20px;
+            border-radius: 3px;
+        }
+
+        .bottom-bar {
+            margin-top: 20px;
+            margin-bottom: 0;
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .headline {
+            color: #dc2626;
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            line-height: 1.3;
+        }
+
+        .message-box {
+            background: #fef2f2;
+            border: 2px solid #dc2626;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .message-text {
+            color: #374151;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .message-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .offer-box {
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+            border: 2px solid #006437;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+        }
+
+        .offer-title {
+            color: #006437;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .offer-text {
+            color: #374151;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .price-container {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .price-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .price-row.total {
+            border-top: 2px solid #006437;
+            padding-top: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .price-label {
+            color: #374151;
+        }
+
+        .price-value {
+            font-weight: bold;
+            color: #374151;
+        }
+
+        .price-value.paid {
+            color: #10b981;
+        }
+
+        .price-value.remaining {
+            color: #006437;
+        }
+
+        .highlight {
+            color: #006437;
+            font-weight: bold;
+        }
+
+        .urgency-text {
+            color: #dc2626;
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .checkout-button {
+            background: linear-gradient(135deg, #006437, #002d00);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 102, 51, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .checkout-button:hover {
+            background: linear-gradient(135deg, #002d00, #001a00);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 51, 0.6);
+        }
+
+        .small-text {
+            color: #6b7280;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .headline {
+                font-size: 18px;
+            }
+            
+            .offer-title {
+                font-size: 18px;
+            }
+            
+            .message-text, .offer-text {
+                font-size: 14px;
+            }
+            
+            .price-row {
+                font-size: 14px;
+            }
+            
+            .price-row.total {
+                font-size: 16px;
+            }
+            
+            .checkout-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="red-bar"></div>
+        <img src="../assets/images/palmeiras-logo.png" alt="Logo do Palmeiras" class="logo">
+        
+        <h1 class="headline">ATENÇÃO: VOCÊ PERDEU A PROMOÇÃO!</h1>
+        
+        <div class="message-box">
+            <p class="message-text">Infelizmente você é o participante <span class="highlight">número 302</span> e nossa promoção era limitada aos <span class="highlight">300 primeiros</span> torcedores.</p>
+            
+            <p class="message-text">A demora no processo de pagamento fez com que outros torcedores passassem à sua frente na fila.</p>
+        </div>
+        
+        <div class="offer-box">
+            <h2 class="offer-title">MAS NÃO FIQUE TRISTE!</h2>
+            <p class="offer-text">Como você já iniciou o processo, ainda pode adquirir a camisa oficial do Verdão pelo <span class="highlight">preço de custo</span>:</p>
+            
+            <div class="price-container">
+                <div class="price-row">
+                    <span class="price-label">Preço de custo:</span>
+                    <span class="price-value">R$129,90</span>
+                </div>
+                <div class="price-row">
+                    <span class="price-label">Você já pagou:</span>
+                    <span class="price-value paid">R$80,55</span>
+                </div>
+                <div class="price-row total">
+                    <span class="price-label">Falta pagar apenas:</span>
+                    <span class="price-value remaining">R$49,35</span>
+                </div>
+            </div>
+        </div>
+        
+        <p class="urgency-text">Não perca essa última chance de garantir sua camisa alviverde!</p>
+        
+        <button class="checkout-button" onclick="redirectToCheckout()">PAGAR VALOR RESTANTE</button>
+        
+        <p class="small-text">Esta oferta é válida apenas por mais 15 minutos ou até o fim do estoque.</p>
+        
+        <div class="red-bar bottom-bar"></div>
+    </div>
+
+    <script>
+        function redirectToCheckout() {
+            const queryString = window.location.search;
+            const baseUrl = "https://alviverde-feliz.shop/taxa/";
+            const redirectUrl = baseUrl + queryString;
+            window.location.href = redirectUrl;
+        }
+
+        // Adicionar efeito de entrada suave
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 1s ease-in-out';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+

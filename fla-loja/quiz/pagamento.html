@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento PIX - Loja Oficial do Flamengo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .payment-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #E60026;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .payment-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .payment-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .order-summary {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .order-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .item-details {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: #E60026;
+        }
+
+        .total-section {
+            border-top: 2px solid #E60026;
+            padding-top: 15px;
+            margin-top: 15px;
+        }
+
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .total-final {
+            font-size: 20px;
+            font-weight: bold;
+            color: #E60026;
+        }
+
+        .qr-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .qr-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .qr-instructions {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .payment-status {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .status-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .status-text {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .status-description {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #E60026;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .success {
+            background: #d4edda;
+            border-color: #c3e6cb;
+        }
+
+        .success .status-icon {
+            color: #28a745;
+        }
+
+        .error {
+            background: #f8d7da;
+            border-color: #f5c6cb;
+        }
+
+        .error .status-icon {
+            color: #dc3545;
+        }
+
+        .copy-button {
+            background: #E60026;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .copy-button:hover {
+            background: #B8001F;
+        }
+
+        .back-button {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #5a6268;
+        }
+
+        @media (max-width: 768px) {
+            .payment-container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .payment-title {
+                font-size: 24px;
+            }
+
+            .qr-code {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="payment-container">
+        <div class="logo">CRF</div>
+
+        <h1 class="payment-title">Finalizar Pagamento</h1>
+        <p class="payment-subtitle">Complete seu pedido com PIX</p>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h3 class="order-title">Resumo do Pedido</h3>
+            <div id="orderItems"></div>
+
+            <div class="total-section">
+                <div class="total-row">
+                    <span>Subtotal:</span>
+                    <span id="subtotalAmount">R$ 0,00</span>
+                </div>
+                <div class="total-row">
+                    <span>Desconto (80%):</span>
+                    <span id="discountAmount" style="color: #28a745;">-R$ 0,00</span>
+                </div>
+                <div class="total-row">
+                    <span>Frete:</span>
+                    <span style="color: #28a745;">GRÁTIS</span>
+                </div>
+                <div class="total-row total-final">
+                    <span>Total:</span>
+                    <span id="totalAmount">R$ 0,00</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Status -->
+        <div class="payment-status" id="paymentStatus">
+            <div class="status-icon">⏳</div>
+            <div class="status-text">Gerando PIX...</div>
+            <div class="status-description">Aguarde enquanto preparamos seu pagamento</div>
+            <div class="loading"></div>
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="qr-section" id="qrSection" style="display: none;">
+            <h3 class="qr-title">Escaneie o QR Code</h3>
+            <div class="qr-code" id="qrCode">
+                Carregando QR Code...
+            </div>
+            <div class="qr-instructions">
+                Abra o app do seu banco, escaneie o código QR acima ou copie e cole o código PIX
+            </div>
+            <button class="copy-button" id="copyPixButton" onclick="copyPixCode()">
+                📋 Copiar Código PIX
+            </button>
+        </div>
+
+        <a href="#" class="back-button" onclick="goBackToStore()">← Voltar à Loja</a>
+    </div>
+
+    <script>
+        let paymentData = null;
+        let checkInterval = null;
+        let pixCode = '';
+        let currentTransactionId = null;
+
+        // Initialize payment system
+        document.addEventListener('DOMContentLoaded', function () {
+            loadOrderSummary();
+            initializePayment();
+        });
+
+        function loadOrderSummary() {
+            const cartData = JSON.parse(localStorage.getItem('cartData') || '[]');
+            const orderItems = document.getElementById('orderItems');
+
+            if (cartData.length === 0) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            let subtotal = 0;
+            let originalTotal = 0;
+
+            cartData.forEach(item => {
+                subtotal += item.price * item.quantity;
+                originalTotal += item.originalPrice * item.quantity;
+
+                const orderItem = document.createElement('div');
+                orderItem.className = 'order-item';
+                orderItem.innerHTML = `
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-details">
+                            Tamanho: ${item.size} | Qtd: ${item.quantity}
+                            ${item.personalizacao ? `<br>Personalização: ${item.personalizacao}` : ''}
+                        </div>
+                    </div>
+                    <div class="item-price">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</div>
+                `;
+                orderItems.appendChild(orderItem);
+            });
+
+            const discount = originalTotal - subtotal;
+
+            document.getElementById('subtotalAmount').textContent = `R$ ${originalTotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById('discountAmount').textContent = `-R$ ${discount.toFixed(2).replace('.', ',')}`;
+            document.getElementById('totalAmount').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        }
+
+        async function initializePayment() {
+            try {
+                const cartData = JSON.parse(localStorage.getItem('cartData') || '[]');
+                console.log('Dados do carrinho:', cartData);
+                
+                const totalAmount = cartData.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                console.log('Valor total calculado:', totalAmount);
+
+                // Simulate API call to GhostsPay
+                await createPixPayment(totalAmount);
+
+            } catch (error) {
+                console.error('Erro ao inicializar pagamento:', error);
+                showError('Erro ao gerar PIX. Tente novamente.');
+            }
+        }
+
+        async function createPixPayment(amount) {
+            try {
+                // Captura parâmetros UTM da URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const utmParams = {
+                    utm_source: urlParams.get('utm_source'),
+                    utm_medium: urlParams.get('utm_medium'),
+                    utm_campaign: urlParams.get('utm_campaign'),
+                    utm_content: urlParams.get('utm_content'),
+                    utm_term: urlParams.get('utm_term'),
+                    xcod: urlParams.get('xcod'),
+                    sck: urlParams.get('sck')
+                };
+
+                // Prepara dados para envio ao pagamento.php
+                const formData = new FormData();
+                // Envia o valor em reais para o pagamento.php
+                formData.append('amount', amount);
+
+                // Adiciona parâmetros UTM se existirem
+                Object.keys(utmParams).forEach(key => {
+                    if (utmParams[key]) {
+                        formData.append(key, utmParams[key]);
+                    }
+                });
+
+                console.log('Valor sendo enviado para pagamento.php:', amount);
+                console.log('Dados completos:', Object.fromEntries(formData));
+
+                // Chama o pagamento.php
+                const response = await fetch('pagamento.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                console.log('Resposta do pagamento.php:', result);
+
+                if (result.success) {
+                    paymentData = {
+                        id: result.token,
+                        amount: amount,
+                        pixCode: result.pixCode,
+                        qrCodeUrl: result.qrCodeUrl
+                    };
+                    currentTransactionId = result.token;
+                    pixCode = result.pixCode;
+
+                    showQRCode(paymentData);
+                    startPaymentCheck();
+                } else {
+                    throw new Error(result.message || 'Falha ao criar pagamento PIX');
+                }
+            } catch (error) {
+                console.error('Erro ao criar pagamento:', error);
+                showError('Erro ao gerar PIX. Tente novamente.');
+            }
+        }
+
+        // Mock function for testing (remove in production)
+        async function createPixPaymentMock(amount) {
+            // Simulate API call delay
+            await new Promise(resolve => setTimeout(resolve, 2000));
+
+            const mockResponse = {
+                id: 'mock_' + Date.now(),
+                amount: amount,
+                pixCode: '00020126580014BR.GOV.BCB.PIX0136' + Math.random().toString(36).substr(2, 32) + '5204000053039865802BR5925LOJA OFICIAL DO FLAMENGO6009SAO PAULO62070503***6304',
+                qrCodeUrl: null
+            };
+
+            paymentData = mockResponse;
+            currentTransactionId = mockResponse.id;
+            pixCode = mockResponse.pixCode;
+            showQRCode(mockResponse);
+            startPaymentCheck();
+        }
+
+        function showQRCode(data) {
+            const statusDiv = document.getElementById('paymentStatus');
+            const qrSection = document.getElementById('qrSection');
+
+            statusDiv.innerHTML = `
+                <div class="status-icon">📱</div>
+                <div class="status-text">PIX Gerado com Sucesso!</div>
+                <div class="status-description">Escaneie o QR Code ou copie o código PIX para pagar</div>
+            `;
+
+            // Exibe o QR Code real se disponível
+            if (data.qrCodeUrl) {
+                document.getElementById('qrCode').innerHTML = `
+                    <img src="${data.qrCodeUrl}" alt="QR Code PIX" style="max-width: 100%; height: auto;" />
+                `;
+            } else {
+                document.getElementById('qrCode').innerHTML = `
+                    <div style="font-size: 12px; color: #666;">
+                        QR Code PIX<br>
+                        <small>Valor: R$ ${data.amount.toFixed(2).replace('.', ',')}</small>
+                    </div>
+                `;
+            }
+
+            qrSection.style.display = 'block';
+        }
+
+        function startPaymentCheck() {
+            // Check payment status every 5 seconds
+            checkInterval = setInterval(checkPaymentStatus, 5000);
+
+            // Auto-stop checking after 10 minutes
+            setTimeout(() => {
+                if (checkInterval) {
+                    clearInterval(checkInterval);
+                    showTimeout();
+                }
+            }, 600000);
+        }
+
+        async function checkPaymentStatus() {
+            try {
+                if (!currentTransactionId) return;
+
+                // Chama o verificar.php para verificar status
+                const response = await fetch(`verificar.php?id=${encodeURIComponent(currentTransactionId)}`, {
+                    method: 'GET'
+                });
+
+                const result = await response.json();
+                console.log('Status do pagamento:', result);
+
+                if (result.success) {
+                    const status = result.status;
+
+                    if (status === 'paid' || status === 'approved') {
+                        clearInterval(checkInterval);
+                        showPaymentSuccess();
+
+                        // Redirect to upsell after 3 seconds preserving UTM params
+                        setTimeout(() => {
+                            window.location.href = preserveUtmParams('upsell.html');
+                        }, 3000);
+                    } else if (status === 'expired' || status === 'cancelled') {
+                        clearInterval(checkInterval);
+                        showError('Pagamento expirado ou cancelado. Tente novamente.');
+                    } else if (status === 'failed') {
+                        clearInterval(checkInterval);
+                        showError('Falha no pagamento. Tente novamente.');
+                    }
+                    // Se status ainda é pending, continua verificando
+                } else {
+                    console.error('Erro ao verificar status:', result.message);
+                    // Continua verificando mesmo com erro
+                }
+            } catch (error) {
+                console.error('Erro ao verificar pagamento:', error);
+
+                // Fallback to mock for testing
+                checkPaymentStatusMock();
+            }
+        }
+
+        // Mock function for testing (remove in production)
+        function checkPaymentStatusMock() {
+            // 10% chance of payment being confirmed in mock mode
+            const mockCheck = Math.random() > 0.9;
+
+            if (mockCheck) {
+                clearInterval(checkInterval);
+                showPaymentSuccess();
+
+                setTimeout(() => {
+                    window.location.href = preserveUtmParams('upsell.html');
+                }, 3000);
+            }
+        }
+
+        function showPaymentSuccess() {
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.className = 'payment-status success';
+            statusDiv.innerHTML = `
+                <div class="status-icon">✅</div>
+                <div class="status-text">Pagamento Confirmado!</div>
+                <div class="status-description">Redirecionando para finalizar seu pedido...</div>
+            `;
+
+            // Hide QR section
+            document.getElementById('qrSection').style.display = 'none';
+        }
+
+        function showError(message) {
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.className = 'payment-status error';
+            statusDiv.innerHTML = `
+                <div class="status-icon">❌</div>
+                <div class="status-text">Erro no Pagamento</div>
+                <div class="status-description">${message}</div>
+            `;
+        }
+
+        function showTimeout() {
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.className = 'payment-status error';
+            statusDiv.innerHTML = `
+                <div class="status-icon">⏰</div>
+                <div class="status-text">Tempo Esgotado</div>
+                <div class="status-description">O tempo para pagamento expirou. Tente novamente.</div>
+            `;
+        }
+
+        function copyPixCode() {
+            if (pixCode) {
+                navigator.clipboard.writeText(pixCode).then(() => {
+                    const button = document.getElementById('copyPixButton');
+                    const originalText = button.textContent;
+                    button.textContent = '✅ Código Copiado!';
+                    setTimeout(() => {
+                        button.textContent = originalText;
+                    }, 2000);
+                }).catch(() => {
+                    alert('Erro ao copiar código PIX');
+                });
+            }
+        }
+
+        // Função para capturar parâmetros UTM e preservá-los
+        function getUtmParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                utm_source: urlParams.get('utm_source'),
+                utm_medium: urlParams.get('utm_medium'),
+                utm_campaign: urlParams.get('utm_campaign'),
+                utm_content: urlParams.get('utm_content'),
+                utm_term: urlParams.get('utm_term'),
+                xcod: urlParams.get('xcod'),
+                sck: urlParams.get('sck')
+            };
+        }
+
+        // Preserva parâmetros UTM nos links
+        function preserveUtmParams(url) {
+            const utmParams = getUtmParams();
+            const urlObj = new URL(url, window.location.origin);
+
+            Object.keys(utmParams).forEach(key => {
+                if (utmParams[key]) {
+                    urlObj.searchParams.set(key, utmParams[key]);
+                }
+            });
+
+            return urlObj.toString();
+        }
+
+        // Função para voltar à loja preservando UTM params
+        function goBackToStore() {
+            window.location.href = preserveUtmParams('index.html');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial - Loja Oficial do Flamengo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .upsell-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: #28a745;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+
+        .success-title {
+            font-size: 28px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .success-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .upsell-section {
+            background: #E60026;
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .upsell-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .upsell-description {
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .upsell-offer {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .offer-price {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .offer-details {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: white;
+            color: #E60026;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+
+        .skip-button {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .skip-button:hover {
+            background: white;
+            color: #E60026;
+        }
+
+        .timer {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: #856404;
+        }
+
+        .timer-text {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #E60026;
+        }
+
+        @media (max-width: 768px) {
+            .upsell-container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .success-title {
+                font-size: 24px;
+            }
+
+            .upsell-title {
+                font-size: 20px;
+            }
+
+            .offer-price {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="upsell-container">
+        <div class="success-icon">✅</div>
+        
+        <h1 class="success-title">Pagamento Confirmado!</h1>
+        <p class="success-subtitle">Seu pedido foi processado com sucesso. Agora aproveite esta oferta exclusiva!</p>
+
+        <!-- Timer -->
+        <div class="timer">
+            <div class="timer-text">⏰ Oferta por tempo limitado!</div>
+            <div class="countdown" id="countdown">05:00</div>
+        </div>
+
+        <!-- Upsell Offer -->
+        <div class="upsell-section">
+            <h2 class="upsell-title">🔥 OFERTA ESPECIAL APENAS PARA VOCÊ!</h2>
+            <p class="upsell-description">
+                Como você acabou de comprar, temos uma oferta exclusiva que não pode perder!
+            </p>
+
+            <div class="upsell-offer">
+                <div class="offer-price">R$ 39,98</div>
+                <div class="offer-details">
+                    Kit Acessórios Flamengo Completo<br>
+                    <small>Boné + Chaveiro + Adesivos (Valor normal: R$ 199,90)</small>
+                </div>
+            </div>
+
+            <button class="cta-button" onclick="acceptUpsell()">
+                🛒 SIM, EU QUERO! ADICIONAR AO PEDIDO
+            </button>
+
+            <a href="#" class="skip-button" onclick="skipUpsell()">
+                Não, obrigado. Finalizar pedido
+            </a>
+        </div>
+
+        <div style="text-align: center; color: #666; font-size: 14px;">
+            <p>✅ Pagamento seguro processado</p>
+            <p>📦 Seu pedido será enviado em até 2 dias úteis</p>
+            <p>🚚 Frete grátis para todo o Brasil</p>
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 300; // 5 minutes in seconds
+
+        // Start countdown timer
+        function startTimer() {
+            const timer = setInterval(() => {
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                document.getElementById('countdown').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                timeLeft--;
+                
+                if (timeLeft < 0) {
+                    clearInterval(timer);
+                    document.getElementById('countdown').textContent = '00:00';
+                    // Optionally redirect or disable offer
+                    skipUpsell();
+                }
+            }, 1000);
+        }
+
+        function acceptUpsell() {
+            // In real implementation, this would process the upsell
+            alert('Upsell aceito! Redirecionando para pagamento...');
+            
+            // Add upsell to cart and redirect to payment
+            const upsellItem = {
+                id: Date.now(),
+                name: 'Kit Acessórios Flamengo Completo',
+                price: 39.98,
+                originalPrice: 199.90,
+                quantity: 1,
+                image: 'kit-acessorios.png'
+            };
+            
+            // Save upsell data
+            localStorage.setItem('upsellData', JSON.stringify(upsellItem));
+            
+            // Redirect to upsell payment or thank you page
+            window.location.href = 'obrigado.html';
+        }
+
+        function skipUpsell() {
+            // Redirect to thank you page
+            window.location.href = 'obrigado.html';
+        }
+
+        // Initialize timer when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            startTimer();
+        });
+    </script>
+</body>
+</html>
+

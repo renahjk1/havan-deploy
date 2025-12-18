@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizar Compra - Loja Oficial Flamengo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'flamengo': {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                            'red': '#E31E24',
+                            'dark-red': '#B71C1C',
+                            'black': '#000000'
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    screens: {
+                        'xs': '475px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        .flamengo-gradient {
+            background: linear-gradient(135deg, #E31E24 0%, #B71C1C 100%);
+        }
+        .flamengo-gradient-light {
+            background: linear-gradient(135deg, #E31E24 0%, #dc2626 100%);
+        }
+        .animate-pulse-slow {
+            animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans antialiased">
+    <!-- Header -->
+    <header class="bg-flamengo-black shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <img src="https://flamengo.vtexassets.com/assets/vtex/assets-builder/flamengo.fla-tema/1.0.13/img/logo-fla___1f48c6629bcca549376615ce307f17b6.png" 
+                         alt="Flamengo" class="h-8 sm:h-10 w-auto">
+                    <div class="ml-3 sm:ml-4 hidden sm:block">
+                        <h1 class="text-white font-bold text-lg sm:text-xl">Loja Oficial</h1>
+                        <p class="text-red-100 text-xs sm:text-sm">Finalizar Compra</p>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="sm:hidden text-white p-2" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden sm:flex items-center space-x-6">
+                    <a href="#" onclick="goBackToStore()" 
+                       class="text-white hover:text-red-100 px-3 py-2 text-sm font-medium transition-colors duration-200 flex items-center">
+                        <i class="fas fa-arrow-left mr-2"></i>Voltar à Loja
+                    </a>
+                    <div class="flex items-center space-x-2 text-white bg-flamengo-red bg-opacity-20 px-3 py-2 rounded-lg">
+                        <i class="fas fa-shield-alt text-green-400"></i>
+                        <span class="text-sm font-medium">Checkout Seguro</span>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="hidden sm:hidden pb-4">
+                <div class="space-y-2">
+                    <a href="#" onclick="goBackToStore()" 
+                       class="block text-white hover:text-red-100 px-3 py-2 text-sm font-medium">
+                        <i class="fas fa-arrow-left mr-2"></i>Voltar à Loja
+                    </a>
+                    <div class="flex items-center space-x-2 text-white bg-flamengo-red bg-opacity-20 px-3 py-2 rounded-lg w-fit">
+                        <i class="fas fa-shield-alt text-green-400"></i>
+                        <span class="text-sm font-medium">Checkout Seguro</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="bg-white border-b border-gray-200 py-4 sm:py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-center">
+                <div class="flex items-center space-x-2 sm:space-x-4 w-full max-w-md">
+                    <!-- Step 1 -->
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-flamengo-red rounded-full flex items-center justify-center">
+                            <i class="fas fa-shopping-cart text-white text-sm sm:text-base"></i>
+                        </div>
+                        <span class="ml-2 text-xs sm:text-sm font-medium text-gray-900 hidden xs:inline">Carrinho</span>
+                    </div>
+                    
+                    <!-- Connector -->
+                    <div class="flex-1 h-0.5 bg-flamengo-red"></div>
+                    
+                    <!-- Step 2 - Current -->
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-flamengo-red rounded-full flex items-center justify-center animate-pulse-slow">
+                            <i class="fas fa-credit-card text-white text-sm sm:text-base"></i>
+                        </div>
+                        <span class="ml-2 text-xs sm:text-sm font-medium text-flamengo-red hidden xs:inline">Pagamento</span>
+                    </div>
+                    
+                    <!-- Connector -->
+                    <div class="flex-1 h-0.5 bg-gray-300"></div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 sm:w-10 sm:h-10 bg-gray-300 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-gray-500 text-sm sm:text-base"></i>
+                        </div>
+                        <span class="ml-2 text-xs sm:text-sm font-medium text-gray-500 hidden xs:inline">Confirmação</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+            <!-- Payment Section -->
+            <div class="lg:col-span-8">
+                <!-- Payment Method Card -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <div class="flamengo-gradient px-6 py-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-white bg-opacity-20 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-qrcode text-white text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h2 class="text-xl font-bold text-white">Pagamento via PIX</h2>
+                                <p class="text-red-100 text-sm">Aprovação instantânea • Taxa zero</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 sm:p-6">
+                        <!-- Payment Status -->
+                        <div id="paymentStatus" class="mb-6 p-4 rounded-xl border-2 border-yellow-200 bg-gradient-to-r from-yellow-50 to-orange-50">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0">
+                                    <div class="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center">
+                                        <i class="fas fa-clock text-white"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4 flex-1">
+                                    <h3 class="text-lg font-semibold text-yellow-800">Gerando seu PIX</h3>
+                                    <p class="text-yellow-700 text-sm mt-1">Preparando pagamento seguro...</p>
+                                </div>
+                                <div class="ml-4">
+                                    <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-yellow-600"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QR Code Section -->
+                        <div id="qrSection" class="hidden">
+                            <div class="text-center mb-6">
+                                <h3 class="text-xl font-bold text-gray-900 mb-2">Escaneie o QR Code</h3>
+                                <p class="text-gray-600">Use o app do seu banco para escanear o código abaixo</p>
+                            </div>
+                            
+                            <!-- QR Code Container -->
+                            <div class="flex justify-center mb-6">
+                                <div class="bg-white p-6 rounded-2xl border-4 border-flamengo-red shadow-xl">
+                                    <div id="qrCode" class="w-48 h-48 sm:w-56 sm:h-56 bg-gray-100 rounded-xl flex items-center justify-center">
+                                        <div class="text-center text-gray-500">
+                                            <i class="fas fa-qrcode text-5xl mb-3"></i>
+                                            <p class="text-sm font-medium">Carregando QR Code...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="space-y-4">
+                                <button id="copyPixButton" onclick="copyPixCode()"
+                                        class="w-full flamengo-gradient hover:bg-flamengo-dark-red text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center text-lg">
+                                    <i class="fas fa-copy mr-3"></i>
+                                    Copiar Código PIX
+                                </button>
+                                
+                                <!-- Instructions -->
+                                <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-4">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-info-circle text-blue-600 text-xl mt-1"></i>
+                                        </div>
+                                        <div class="ml-4">
+                                            <h4 class="text-blue-900 font-semibold mb-2">Como pagar com PIX:</h4>
+                                            <ol class="list-decimal list-inside space-y-1 text-blue-800 text-sm">
+                                                <li>Abra o app do seu banco</li>
+                                                <li>Escolha a opção "PIX"</li>
+                                                <li>Escaneie o QR Code ou cole o código copiado</li>
+                                                <li>Confirme os dados e finalize o pagamento</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Order Summary -->
+            <div class="lg:col-span-4">
+                <div class="bg-white rounded-xl shadow-sm border border-gray-200 sticky top-24">
+                    <!-- Header -->
+                    <div class="flamengo-gradient px-6 py-4">
+                        <h3 class="text-xl font-bold text-white flex items-center">
+                            <i class="fas fa-shopping-bag mr-3"></i>
+                            Resumo do Pedido
+                        </h3>
+                    </div>
+                    
+                    <div class="p-4 sm:p-6">
+                        <!-- Order Items -->
+                        <div id="orderItems" class="space-y-4 mb-6">
+                            <!-- Items will be inserted here -->
+                        </div>
+
+                        <!-- Totals -->
+                        <div class="border-t-2 border-gray-100 pt-4 space-y-3">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600 font-medium">Subtotal</span>
+                                <span id="subtotalAmount" class="text-gray-900 font-semibold">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600 font-medium">Desconto</span>
+                                <span id="discountAmount" class="text-green-600 font-semibold">-R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-600 font-medium">Frete</span>
+                                <span class="text-green-600 font-semibold">Grátis</span>
+                            </div>
+                            <div class="border-t-2 border-flamengo-red pt-3">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xl font-bold text-gray-900">Total</span>
+                                    <span id="totalAmount" class="text-2xl font-bold text-flamengo-red">R$ 0,00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trust Badges -->
+                        <div class="mt-6 pt-6 border-t border-gray-200">
+                            <div class="flex items-center justify-center space-x-6 text-xs text-gray-500">
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-lock text-green-600"></i>
+                                    <span class="font-medium">SSL</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-shield-alt text-blue-600"></i>
+                                    <span class="font-medium">Seguro</span>
+                                </div>
+                                <div class="flex items-center space-x-1">
+                                    <i class="fas fa-check-circle text-green-600"></i>
+                                    <span class="font-medium">Verificado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Security Features -->
+        <div class="mt-12 bg-white rounded-xl shadow-sm border border-gray-200 p-4 sm:p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center">
+                <i class="fas fa-shield-alt text-green-600 mr-2"></i>
+                Segurança e Garantias
+            </h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
+                    <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-lock text-white"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900 text-sm">Pagamento Seguro</p>
+                        <p class="text-xs text-gray-600">Criptografia SSL 256-bit</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                    <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-bolt text-white"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900 text-sm">Aprovação Instantânea</p>
+                        <p class="text-xs text-gray-600">PIX em tempo real</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3 p-3 bg-purple-50 rounded-lg sm:col-span-2 lg:col-span-1">
+                    <div class="w-10 h-10 bg-purple-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-headset text-white"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900 text-sm">Suporte Especializado</p>
+                        <p class="text-xs text-gray-600">Atendimento 24/7</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-flamengo-black text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
+                <div class="flex items-center space-x-4">
+                    <img src="https://flamengo.vtexassets.com/assets/vtex/assets-builder/flamengo.fla-tema/1.0.13/img/logo-fla___1f48c6629bcca549376615ce307f17b6.png" 
+                         alt="Flamengo" class="h-8 w-auto">
+                    <div>
+                        <p class="text-sm font-semibold">© 2024 Clube de Regatas do Flamengo</p>
+                        <p class="text-xs text-gray-400">Loja Oficial - Todos os direitos reservados</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-6 text-sm">
+                    <a href="#" class="hover:text-flamengo-red transition-colors">Política de Privacidade</a>
+                    <a href="#" class="hover:text-flamengo-red transition-colors">Termos de Uso</a>
+                    <a href="#" class="hover:text-flamengo-red transition-colors">Suporte</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let paymentData = null;
+        let checkInterval = null;
+        let pixCode = '';
+        let currentTransactionId = null;
+
+        // Initialize payment system
+        document.addEventListener('DOMContentLoaded', function() {
+            loadOrderSummary();
+            initializePayment();
+        });
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        function loadOrderSummary() {
+            const cartData = JSON.parse(localStorage.getItem('cartData') || '[]');
+            const orderItems = document.getElementById('orderItems');
+            
+            if (cartData.length === 0) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            let subtotal = 0;
+            let originalTotal = 0;
+
+            cartData.forEach(item => {
+                subtotal += item.price * item.quantity;
+                originalTotal += item.originalPrice * item.quantity;
+
+                const orderItem = document.createElement('div');
+                orderItem.className = 'flex items-start space-x-3 p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-100';
+                orderItem.innerHTML = `
+                    <div class="flex-shrink-0 w-16 h-16 bg-white rounded-lg overflow-hidden border-2 border-gray-100 shadow-sm">
+                        ${item.image ? 
+                            `<img src="${item.image}" alt="${item.name}" class="w-full h-full object-contain object-center p-1">` :
+                            `<div class="w-full h-full bg-flamengo-red bg-opacity-10 flex items-center justify-center">
+                                <i class="fas fa-tshirt text-flamengo-red text-lg"></i>
+                            </div>`
+                        }
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-gray-900 truncate">${item.name}</p>
+                        <p class="text-xs text-gray-600 mt-1">Tamanho: ${item.size} | Qtd: ${item.quantity}</p>
+                        ${item.personalizacao ? `<p class="text-xs text-gray-600">Personalização: ${item.personalizacao}</p>` : ''}
+                        ${item.patrocinios === 'nao' ? `<p class="text-xs text-blue-600">Sem patrocínios</p>` : ''}
+                    </div>
+                    <div class="flex-shrink-0 text-right">
+                        <p class="text-sm font-bold text-flamengo-red">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</p>
+                    </div>
+                `;
+                orderItems.appendChild(orderItem);
+            });
+
+            const discount = originalTotal - subtotal;
+
+            document.getElementById('subtotalAmount').textContent = `R$ ${originalTotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById('discountAmount').textContent = `-R$ ${discount.toFixed(2).replace('.', ',')}`;
+            document.getElementById('totalAmount').textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+        }
+
+        async function initializePayment() {
+            try {
+                const cartData = JSON.parse(localStorage.getItem('cartData') || '[]');
+                console.log('Dados do carrinho:', cartData);
+                
+                const totalAmount = cartData.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                console.log('Valor total calculado:', totalAmount);
+
+                await createPixPayment(totalAmount);
+                
+            } catch (error) {
+                console.error('Erro ao inicializar pagamento:', error);
+                showError('Erro ao gerar PIX. Tente novamente.');
+            }
+        }
+
+        async function createPixPayment(amount) {
+            try {
+                // Captura parâmetros UTM da URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const utmParams = {
+                    utm_source: urlParams.get('utm_source'),
+                    utm_medium: urlParams.get('utm_medium'),
+                    utm_campaign: urlParams.get('utm_campaign'),
+                    utm_content: urlParams.get('utm_content'),
+                    utm_term: urlParams.get('utm_term'),
+                    xcod: urlParams.get('xcod'),
+                    sck: urlParams.get('sck')
+                };
+
+                // Prepara dados para envio ao pagamento.php
+                const formData = new FormData();
+                formData.append('amount', amount);
+                
+                // Adiciona parâmetros UTM se existirem
+                Object.keys(utmParams).forEach(key => {
+                    if (utmParams[key]) {
+                        formData.append(key, utmParams[key]);
+                    }
+                });
+
+                console.log('Valor sendo enviado para pagamento.php:', amount);
+                console.log('Dados completos:', Object.fromEntries(formData));
+
+                // Chama o pagamento.php
+                const response = await fetch('pagamento.php', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                console.log('Resposta do pagamento.php:', result);
+
+                if (result.success) {
+                    paymentData = {
+                        id: result.token,
+                        amount: amount,
+                        pixCode: result.pixCode,
+                        qrCodeUrl: result.qrCodeUrl
+                    };
+                    currentTransactionId = result.token;
+                    pixCode = result.pixCode;
+                    
+                    showQRCode(paymentData);
+                    startPaymentCheck();
+                } else {
+                    throw new Error(result.message || 'Falha ao criar pagamento PIX');
+                }
+            } catch (error) {
+                console.error('Erro ao criar pagamento:', error);
+                showError('Erro ao gerar PIX. Tente novamente.');
+            }
+        }
+
+        function showQRCode(data) {
+            const statusDiv = document.getElementById('paymentStatus');
+            const qrSection = document.getElementById('qrSection');
+            
+            statusDiv.className = 'mb-6 p-4 rounded-xl border-2 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50';
+            statusDiv.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-white"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h3 class="text-lg font-semibold text-green-800">PIX Gerado com Sucesso!</h3>
+                        <p class="text-green-700 text-sm mt-1">Escaneie o código ou copie o PIX para pagar</p>
+                    </div>
+                    <div class="ml-4">
+                        <i class="fas fa-qrcode text-green-600 text-2xl"></i>
+                    </div>
+                </div>
+            `;
+
+            // Exibe o QR Code real se disponível
+            if (data.qrCodeUrl) {
+                document.getElementById('qrCode').innerHTML = `
+                    <img src="${data.qrCodeUrl}" alt="QR Code PIX" class="w-full h-full object-contain rounded-xl" />
+                `;
+            } else {
+                document.getElementById('qrCode').innerHTML = `
+                    <div class="text-center text-gray-500">
+                        <i class="fas fa-qrcode text-5xl mb-3"></i>
+                        <p class="text-sm font-medium">QR Code PIX</p>
+                        <p class="text-xs mt-1">R$ ${data.amount.toFixed(2).replace('.', ',')}</p>
+                    </div>
+                `;
+            }
+
+            qrSection.classList.remove('hidden');
+        }
+
+        function startPaymentCheck() {
+            checkInterval = setInterval(checkPaymentStatus, 5000);
+            
+            setTimeout(() => {
+                if (checkInterval) {
+                    clearInterval(checkInterval);
+                    showTimeout();
+                }
+            }, 600000);
+        }
+
+        async function checkPaymentStatus() {
+            try {
+                if (!currentTransactionId) return;
+
+                const response = await fetch(`verificar.php?id=${encodeURIComponent(currentTransactionId)}`, {
+                    method: 'GET'
+                });
+
+                const result = await response.json();
+                console.log('Status do pagamento:', result);
+                
+                if (result.success) {
+                    const status = result.status;
+                    
+                    if (status === 'paid' || status === 'approved') {
+                        clearInterval(checkInterval);
+                        showPaymentSuccess();
+                        
+                        setTimeout(() => {
+                            window.location.href = preserveUtmParams('upsell.html');
+                        }, 3000);
+                    } else if (status === 'expired' || status === 'cancelled') {
+                        clearInterval(checkInterval);
+                        showError('Pagamento expirado ou cancelado. Tente novamente.');
+                    } else if (status === 'failed') {
+                        clearInterval(checkInterval);
+                        showError('Falha no pagamento. Tente novamente.');
+                    }
+                } else {
+                    console.error('Erro ao verificar status:', result.message);
+                }
+            } catch (error) {
+                console.error('Erro ao verificar pagamento:', error);
+                checkPaymentStatusMock();
+            }
+        }
+
+        function checkPaymentStatusMock() {
+            const mockCheck = Math.random() > 0.9;
+            
+            if (mockCheck) {
+                clearInterval(checkInterval);
+                showPaymentSuccess();
+                
+                setTimeout(() => {
+                    window.location.href = preserveUtmParams('upsell.html');
+                }, 3000);
+            }
+        }
+
+        function showPaymentSuccess() {
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.className = 'mb-6 p-4 rounded-xl border-2 border-green-200 bg-gradient-to-r from-green-50 to-emerald-50';
+            statusDiv.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check-circle text-white"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h3 class="text-lg font-semibold text-green-800">Pagamento Confirmado!</h3>
+                        <p class="text-green-700 text-sm mt-1">Redirecionando para finalizar seu pedido...</p>
+                    </div>
+                    <div class="ml-4">
+                        <i class="fas fa-heart text-flamengo-red text-2xl animate-pulse"></i>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('qrSection').classList.add('hidden');
+        }
+
+        function showError(message) {
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.className = 'mb-6 p-4 rounded-xl border-2 border-red-200 bg-gradient-to-r from-red-50 to-pink-50';
+            statusDiv.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-white"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h3 class="text-lg font-semibold text-red-800">Erro no Pagamento</h3>
+                        <p class="text-red-700 text-sm mt-1">${message}</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showTimeout() {
+            const statusDiv = document.getElementById('paymentStatus');
+            statusDiv.className = 'mb-6 p-4 rounded-xl border-2 border-red-200 bg-gradient-to-r from-red-50 to-pink-50';
+            statusDiv.innerHTML = `
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-10 h-10 bg-red-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-clock text-white"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4 flex-1">
+                        <h3 class="text-lg font-semibold text-red-800">Tempo Esgotado</h3>
+                        <p class="text-red-700 text-sm mt-1">O tempo para pagamento expirou. Tente novamente.</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        function copyPixCode() {
+            if (pixCode) {
+                navigator.clipboard.writeText(pixCode).then(() => {
+                    const button = document.getElementById('copyPixButton');
+                    const originalHTML = button.innerHTML;
+                    const originalClass = button.className;
+                    
+                    button.innerHTML = '<i class="fas fa-check mr-3"></i>Código Copiado!';
+                    button.className = 'w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center text-lg';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.className = originalClass;
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback para navegadores que não suportam clipboard API
+                    const textArea = document.createElement('textarea');
+                    textArea.value = pixCode;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    const button = document.getElementById('copyPixButton');
+                    const originalHTML = button.innerHTML;
+                    const originalClass = button.className;
+                    
+                    button.innerHTML = '<i class="fas fa-check mr-3"></i>Código Copiado!';
+                    button.className = 'w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center text-lg';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.className = originalClass;
+                    }, 2000);
+                });
+            } else {
+                // Se não há código PIX, simular um código para teste
+                const mockPixCode = "00020126580014BR.GOV.BCB.PIX013636c4b8e9-6f7a-4c2d-8b3e-1a2b3c4d5e6f5204000053039865802BR5925LOJA OFICIAL DO FLAMENGO6009SAO PAULO62070503***6304";
+                
+                navigator.clipboard.writeText(mockPixCode).then(() => {
+                    const button = document.getElementById('copyPixButton');
+                    const originalHTML = button.innerHTML;
+                    const originalClass = button.className;
+                    
+                    button.innerHTML = '<i class="fas fa-check mr-3"></i>Código Copiado!';
+                    button.className = 'w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center text-lg';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.className = originalClass;
+                    }, 2000);
+                }).catch(() => {
+                    // Fallback para navegadores que não suportam clipboard API
+                    const textArea = document.createElement('textarea');
+                    textArea.value = mockPixCode;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    
+                    const button = document.getElementById('copyPixButton');
+                    const originalHTML = button.innerHTML;
+                    const originalClass = button.className;
+                    
+                    button.innerHTML = '<i class="fas fa-check mr-3"></i>Código Copiado!';
+                    button.className = 'w-full bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center justify-center text-lg';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.className = originalClass;
+                    }, 2000);
+                });
+            }
+        }
+
+        function getUtmParams() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return {
+                utm_source: urlParams.get('utm_source'),
+                utm_medium: urlParams.get('utm_medium'),
+                utm_campaign: urlParams.get('utm_campaign'),
+                utm_content: urlParams.get('utm_content'),
+                utm_term: urlParams.get('utm_term'),
+                xcod: urlParams.get('xcod'),
+                sck: urlParams.get('sck')
+            };
+        }
+
+        function preserveUtmParams(url) {
+            const utmParams = getUtmParams();
+            const urlObj = new URL(url, window.location.origin);
+            
+            Object.keys(utmParams).forEach(key => {
+                if (utmParams[key]) {
+                    urlObj.searchParams.set(key, utmParams[key]);
+                }
+            });
+            
+            return urlObj.toString();
+        }
+
+        function goBackToStore() {
+            window.location.href = preserveUtmParams('index.html');
+        }
+    </script>
+</body>
+</html>

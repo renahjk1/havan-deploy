@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-xcod-sck
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+<script>
+  window.googlePixelId = "682f30ea1e7e46c2d68c5582";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel-google.js");
+  document.head.appendChild(a);
+</script>
+  <meta charset="UTF-8">
+  <title>Redirecionando...</title>
+  <script>
+    const upsellPages = [
+      "https://patriotas-feliz.shop/pos/upsell/01/",
+      "https://patriotas-feliz.shop/pos/upsell/02/",
+      "https://patriotas-feliz.shop/pos/upsell/03/",
+      "https://patriotas-feliz.shop/pos/upsell/04/",
+      "https://hv-consultar.shop/upsell/05/",
+      "https://hv-consultar.shop/upsell/06/"
+    ];
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parseInt(parts.pop().split(';').shift());
+      return null;
+    }
+
+    function setCookie(name, value, days) {
+      const expires = new Date(Date.now() + days * 864e5).toUTCString();
+      document.cookie = `${name}=${value}; expires=${expires}; path=/`;
+    }
+
+    window.onload = function () {
+      let step = getCookie("upsell_progress");
+
+      if (step === null || isNaN(step)) {
+        step = 0;
+      } else {
+        step += 1;
+      }
+
+      if (step >= upsellPages.length) {
+        window.location.href = "https://hv-consultar.shop/pos";
+        return;
+      }
+
+      setCookie("upsell_progress", step, 30);
+      window.location.href = upsellPages[step];
+    }
+  </script>
+</head>
+<body>
+  <p style="display: none;">Redirecionando...</p>
+</body>
+</html>

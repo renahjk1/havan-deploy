@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palmeiras na Final da Libertadores - Ganhe sua Camisa Grátis!</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #006437, #FFFFFF);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .logo {
+            width: 80px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .camisa-container {
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .camisa {
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .camisa:hover {
+            transform: scale(1.05);
+        }
+
+        .title {
+            color: #004000;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .description {
+            color: #374151;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #004000, #002d00);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 102, 51, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: linear-gradient(135deg, #002d00, #001a00);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 102, 51, 0.6);
+        }
+
+        .cta-button:active {
+            transform: translateY(0);
+        }
+
+        .highlight {
+            color: #004000;
+            font-weight: bold;
+        }
+
+        .prize-text {
+            background: linear-gradient(135deg, #fef3c7, #fbbf24);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 5px solid #004000;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .title {
+                font-size: 24px;
+            }
+            
+            .description {
+                font-size: 14px;
+            }
+            
+            .camisa {
+                width: 200px;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo do Fluminense -->
+        <img src="../assets/images/palmeiras-logo.png" alt="Logo do Palmeiras" class="logo">
+        
+        <!-- Título -->
+        <h1 class="title">🏆 PALMEIRAS NA FINAL DA LIBERTADORES! 🏆</h1>
+        
+        <!-- Imagem da Camisa -->
+        <div class="camisa-container">
+            <img src="../assets/images/palmeiras-camisa.jpg" alt="Camisa Verdão do Palmeiras" class="camisa">
+        </div>
+        
+        <!-- Descrição -->
+        <div class="description">
+            O <span class="highlight">Palmeiras</span> está <span class="highlight">NA FINAL DA LIBERTADORES</span>! E para celebrar essa classificação histórica, estamos distribuindo <span class="highlight">camisetas oficiais GRÁTIS</span> para os verdadeiros torcedores alviverdes. Responda nosso quiz sobre essa classificação épica e ganhe sua camisa para comemorar junto com o Verdão!
+        </div>
+        
+        <!-- Destaque do Prêmio -->
+        <div class="prize-text">
+            <strong>🎁 CELEBRE A CLASSIFICAÇÃO: Camisa Oficial GRÁTIS!</strong>
+        </div>
+        
+        <!-- Botão de Call to Action -->
+        <button class="cta-button" onclick="redirectToQuiz()">
+            Celebrar o Título Mundial!
+        </button>
+    </div>
+
+    <script>
+        function redirectToQuiz() {
+            // Redirecionar com parâmetros UTM do Facebook Ads
+            const queryString = window.location.search; // Get the entire query string
+            const baseUrl = "https://torcedor-ganhos.space/quiz1/";
+            const redirectUrl = baseUrl + queryString;
+            window.location.href = redirectUrl;
+        }
+
+        // Adicionar efeito de entrada suave
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.querySelector('.container');
+            container.style.opacity = '0';
+            container.style.transform = 'translateY(30px)';
+            
+            setTimeout(() => {
+                container.style.transition = 'all 1s ease-in-out';
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
+

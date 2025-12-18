@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedido Confirmado - Loja Oficial do Flamengo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: #f5f5f5;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .thank-you-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: #28a745;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        .thank-you-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+
+        .thank-you-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .order-info {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-value {
+            color: #666;
+        }
+
+        .next-steps {
+            background: #E60026;
+            color: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .steps-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .step-number {
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: #856404;
+        }
+
+        .contact-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .home-button {
+            background: #E60026;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .home-button:hover {
+            background: #B8001F;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .thank-you-container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .thank-you-title {
+                font-size: 28px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .step {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="success-icon">🎉</div>
+        
+        <h1 class="thank-you-title">Obrigado pela sua compra!</h1>
+        <p class="thank-you-subtitle">Seu pedido foi confirmado e será processado em breve.</p>
+
+        <!-- Order Information -->
+        <div class="order-info">
+            <div class="info-row">
+                <span class="info-label">📧 Email de confirmação:</span>
+                <span class="info-value">Enviado para seu email</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">📦 Código de rastreamento:</span>
+                <span class="info-value">Será enviado em até 24h</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">🚚 Prazo de entrega:</span>
+                <span class="info-value">2 a 5 dias úteis</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">💳 Forma de pagamento:</span>
+                <span class="info-value">PIX - Confirmado</span>
+            </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="next-steps">
+            <h3 class="steps-title">📋 Próximos Passos:</h3>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Você receberá um email de confirmação com todos os detalhes do pedido</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Seu pedido será separado e embalado com todo cuidado</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Enviaremos o código de rastreamento para acompanhar a entrega</div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Receba seus produtos oficiais do Flamengo em casa!</div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+            <div class="contact-title">📞 Precisa de ajuda?</div>
+            <p>Entre em contato conosco:</p>
+            <p><strong>WhatsApp:</strong> (21) 99999-9999</p>
+            <p><strong>Email:</strong> atendimento@lojaflamengo.com.br</p>
+            <p><strong>Horário:</strong> Segunda a Sexta, 9h às 18h</p>
+        </div>
+
+        <a href="index.html" class="home-button">🏠 Voltar à Loja</a>
+
+        <div style="margin-top: 30px; color: #666; font-size: 14px;">
+            <p>🔒 Compra 100% segura e protegida</p>
+            <p>⭐ Produtos oficiais com garantia</p>
+            <p>🚚 Frete grátis para todo o Brasil</p>
+        </div>
+    </div>
+
+    <script>
+        // Clear cart data after successful purchase
+        document.addEventListener('DOMContentLoaded', function() {
+            localStorage.removeItem('cartData');
+            localStorage.removeItem('upsellData');
+        });
+    </script>
+</body>
+</html>
+

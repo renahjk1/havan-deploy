@@ -1,0 +1,1 @@
+No Content: https://shope-card.site/ativeseucartao/scripts/utms/latest.js
