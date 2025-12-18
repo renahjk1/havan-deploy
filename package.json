@@ -1,0 +1,21 @@
+{
+  "name": "havan-deploy",
+  "version": "1.0.0",
+  "description": "Funil de vendas Havan com integração de consulta de CPF",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["havan", "funil", "cpf"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
