@@ -19,7 +19,7 @@ try {
     
     // Configurações da API SKALEPAY
     $apiUrl = 'https://api.conta.skalepay.com.br/v1';
-    $secretKey = 'sk_live_XXXXX';
+    $secretKey = getenv('SKALEPAY_SECRET_KEY') ?: 'sk_live_XXXXX'; // Use variável de ambiente
 
     // Conecta ao SQLite (fallback local)
     $dbPath = __DIR__ . '/database.sqlite';
